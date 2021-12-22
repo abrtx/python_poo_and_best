@@ -1,0 +1,160 @@
+
+* Ejemplo
+# use return statement
+# Entire source block will get indented and used as the body of main()
+#+begin_src python
+def foo(x):
+  if x>0:
+    return x+1
+
+  else:
+    return x-1
+
+return foo(5)
+#+end_src
+
+
+* Lambda
+#+begin_src python :results output :session
+SignoPeso = lambda signo:f'${signo}'
+print("")
+print("#### Lambda method!! ####")
+print(SignoPeso(100))
+print("")
+#+end_src
+
+* Getsizeof / generator
+#+begin_src python :results output
+  import sys
+  print("#### sized difference ####")
+  # Lists are mutables
+  my_list = [i for i in range(10000)]
+  print("")
+  print(sum(my_list))
+  print("### size in list!! ###")
+  print(sys.getsizeof(my_list), "bytes")
+
+  # Tuples are unmutable
+  my_tuple = (i for i in range(10000))
+  print("")
+  print(sum(my_tuple))
+  print("### size in tuple!! ###")
+  print(sys.getsizeof(my_tuple), "bytes")
+  print("")
+#+end_src
+
+* Count hashable objects with collections.counter
+
+#+begin_src python :results output
+from collections import Counter
+
+_list = [2,2,2,2,5,5,5,5,7,7,1,1,1,1,1,1,1]
+counter = Counter(_list)
+print("**** Count every items ****")
+print(_list)
+print(counter)
+print("")
+#+end_src
+
+* Concat with .join()
+
+#+begin_src python :results output
+list_of_things = ["Hello" , "my", "Potilla"]
+
+my_string = " ".join(list_of_things)
+print("**** joining things!! ****")
+print(my_string)
+print("")
+#+end_src
+
+* Extender listas
+
+#+begin_src python :results output
+courses1 = ["History", "Science", "PE", "Language"]
+courses2 = ["Python", "Assembly", "C", "Perl"]
+
+courses1.extend(courses2)
+print("**** Extender listas!! ****")
+print(courses1)
+print("")
+#+end_src
+
+* Remove - pop
+
+#+begin_src python :results output
+    courses1 = ["History", "Science", "PE", "Language"]
+    courses2 = ["Python", "Assembly", "C", "Perl"]
+
+    courses1.extend(courses2)
+
+    courses1.remove('PE')
+    print("**** Remove a item 'PE'!! ****")
+    print(courses1)
+    print("")
+
+    courses1.pop()
+    print("**** Remove last (POP) !! ****")
+    print(courses1)
+    print("")
+#+end_src
+
+* Merge two Dictionaries (3.5+)
+
+#+begin_src python :results output
+d1 = {"Name": "Florencia", "age": "13"}
+d2 = {"Name": "Natalia", "City": "Talagante"}
+merged_dict = {**d2, **d1}
+
+print("**** Merging dicts!! ****")
+print(merged_dict)
+print("")
+#+end_src
+
+* Search in a list
+
+#+begin_src python :results output
+
+courses1 = ["History", "Science", "PE", "Language"]
+courses2 = ["Python", "Assembly", "C", "Perl"]
+
+courses1.extend(courses2)
+
+print("**** Search 'C++' in list!! ****")
+print("C++" in courses1)
+print("")
+#+end_src
+
+* Sets {}
+#+begin_src python :results output
+  print("**** Sets functions!! ****")
+  set1 = {'History', 'Science', 'Perl', 'Language'}
+  set2 = {'Python', 'Assembly', 'C', 'Perl'}
+  print("*** Intersections!! ***")
+  print(set1.intersection(set2))
+  print("*** differences!! ***")
+  print(set1.difference(set2))
+  print("*** Union!! ***")
+  print(set1.union(set2))
+ 
+#+end_src
+
+* Threads
+#+begin_src python :results output :session
+import time
+import logging
+from concurrent.futures import ThreadPoolExecutor
+
+logging.basicConfig(level=logging.DEBUG, format='\n%(threadName)s: %(message)s')
+
+def super_task(a, b):
+    time.sleep(1)
+    logging.info(f'Terminamos la tarea compleja {a} - {b}!!\n')
+
+if __name__ == '__main__':
+
+    executor = ThreadPoolExecutor(max_workers=4)
+
+    executor.submit(super_task, 0,1)
+    executor.submit(super_task, 2,3)
+
+#+end_src
