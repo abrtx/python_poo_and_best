@@ -4,3 +4,7 @@
 
 * Stage/Unstage
    staging (s) and unstaging (u)
+
+* Set remote
+
+git remote set-url origin git://github.com/abrtx/python_poo_and_best.git
