@@ -1,0 +1,6 @@
+* Iniciar Magit
+  C-x g (to display information about the current Git repository in
+        a dedicated buffer, called the status buffer.)
+
+* Stage/Unstage
+   staging (s) and unstaging (u)
