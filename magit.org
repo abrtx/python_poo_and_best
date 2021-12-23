@@ -5,7 +5,8 @@
 * Stage/Unstage
    staging (s) and unstaging (u)
 
-* Set remote
+* Set remote and push
 git remote set-url origin https://github.com/abrtx/python_poo_and_best.git
 git branch --set-upstream-to=origin/master master
 git pull
+git push
