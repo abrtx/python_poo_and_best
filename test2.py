@@ -1,3 +1,5 @@
+import datetime
+
 class Person:
 
     raise_amt= 1.04
@@ -43,14 +45,23 @@ class Employee(Person):
     @classmethod
     def from_string(cls, emp_str):
         voto, first, last, antiguedad, salary = emp_str.split('-')
-        return cls(voto, first, last, antiguedad, salary)
+        return cls(voto, first, last, antiguedad, int(salary))
+
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6 :
+            return False
+        return True
 
 
-emp_str_1 = "si-Renata-Gaudino-8-70000"
+emp_str_1 = "si-Renata-Gaudino-8-70_000"
 emp_str_2 = "no-Isabel-Gaudino-10-50000"
 emp_str_3 = "si-Florencia-Gaudino-9-80000"
-    
+
 new_emp = Employee.from_string(emp_str_1)
+
+my_date = datetime.date(2021,12,25)
+
 
 e = Employee('','','','5','')
 
@@ -70,4 +81,6 @@ print(e)
 print("###### New work ######")
 print(Employee.raise_amt)
 print(e.raise_amt)
-print(new_emp.salary)
+print(f'Salario anual: {new_emp.salary}')
+print(f'Habilitado para votar: {new_emp.voto}')
+print(Employee.is_workday(my_date))
