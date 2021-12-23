@@ -29,7 +29,7 @@ class Employee(Person):
 #        return f'Employee({self.first}, {self.last})'
 
     def __str__(self):
-        return f'Employee({self.first}, {self.last})'
+        return f'Employee({self.first}, {self.last}, {self.antiguedad} anios de antiguedad)'
 
 
 e = Employee('','','','5')
