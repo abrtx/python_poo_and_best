@@ -60,6 +60,16 @@ class Employee(Person):
         self.salary = int(self.salary * self.raise_amt)
 
 
+    def create_dict(key,value):
+        dic = {
+            "key": key,
+            "value": value,
+        }
+
+        return dic
+
+
+
 emp_str_1 = "si-Renata-Gaudino-8-70_000"
 emp_str_2 = "no-Isabel-Gaudino-10-50000"
 emp_str_3 = "si-Florencia-Gaudino-9-80000"
@@ -95,3 +105,5 @@ new_emp.apply_raise()
 print(f'Salario incrementado 5%: {new_emp.salary}')
 print(new_emp.__dict__)
 print(Employee.num_of_emp)
+dic_a = Employee.create_dict(new_emp.first,new_emp.last)
+print(dic_a["key"])
