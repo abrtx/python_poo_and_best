@@ -1,0 +1,56 @@
+* Configurar git
+
+git config --list
+git config --global user.name "Franco Gaudino"
+git config --global user.email "franco.gaudino@yahoo.com"
+git config --list
+
+* Iniciar Git
+
+git init # En ruta seleccionada
+
+* Ver estado
+
+git status
+
+git --git-dir=work/project/AVR/.git/ status
+
+* Agregar archivos a stagging
+
+git add -A  * Agregar todos los archivos
+git add namefile * Agregar archivo especifico
+
+git commit -m "Mensaje"
+
+* Ver Log
+
+git log
+
+
+* Subir archivos a Internet
+
+create directory in GitHub
+
+git remote add origin 'your_url_name'
+
+git push origin master
+
+* Cargar ultima version desde Internet
+
+git pull origin master
+
+* Branch -> trabajar con ramas de codigo
+
+git branch nombreBranch
+
+git checkout nombreBranch  -> cambiar branch
+
+* Verificar branch merged
+
+git branch --merged
+
+* Merge a branch to master  -> cambiar a Master
+
+git merge nombreBranch
+
+
