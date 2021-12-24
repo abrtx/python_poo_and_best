@@ -3,13 +3,15 @@ import datetime
 class Person:
 
     raise_amt= 1.04
+    num_of_emp = 0
 
     def __init__(self, voto, first, last):
         self.voto = voto
         self.first = first
         self.last = last
 
-
+        Employee.num_of_emp +=1
+        
 class Employee(Person):
     def __init__(self, voto, first, last, antiguedad, salary):
         super().__init__(voto, first, last)
@@ -91,3 +93,5 @@ print(f'Habilitado para votar: {new_emp.voto}')
 print(Employee.is_workday(my_date))
 new_emp.apply_raise()
 print(f'Salario incrementado 5%: {new_emp.salary}')
+print(new_emp.__dict__)
+print(Employee.num_of_emp)
