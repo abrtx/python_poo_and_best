@@ -54,9 +54,14 @@ class Employee(Person):
         return True
 
 
+    def apply_raise(self):
+        self.salary = int(self.salary * self.raise_amt)
+
+
 emp_str_1 = "si-Renata-Gaudino-8-70_000"
 emp_str_2 = "no-Isabel-Gaudino-10-50000"
 emp_str_3 = "si-Florencia-Gaudino-9-80000"
+
 
 new_emp = Employee.from_string(emp_str_1)
 
@@ -84,3 +89,5 @@ print(e.raise_amt)
 print(f'Salario anual: {new_emp.salary}')
 print(f'Habilitado para votar: {new_emp.voto}')
 print(Employee.is_workday(my_date))
+new_emp.apply_raise()
+print(f'Salario incrementado 5%: {new_emp.salary}')
