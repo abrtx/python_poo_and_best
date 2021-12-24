@@ -158,3 +158,22 @@ if __name__ == '__main__':
 
 
 
+
+* Dictionary_function
+
+#+begin_src python :results output :session
+
+  def create_dict(key,value):
+    dic = {
+           "key": key,
+           "value": value,
+    }
+
+    return dic
+
+  dic_a = create_dict("Hija","Florencia")
+  print(dic_a)
+#+end_src
+
+#+RESULTS:
+: {'key': 'Hija', 'value': 'Florencia'}
