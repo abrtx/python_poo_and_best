@@ -11,7 +11,7 @@ def comRut(i):
             return(i)
 
 
-df = pd.read_csv('data.csv')
+df = pd.read_csv('entrada/archivo.csv')
 dfPrint = pd.DataFrame()
 dfWhere = pd.DataFrame()
 numpy_array = df.to_numpy()
@@ -44,7 +44,7 @@ for i in range(0, num_cols_w):
 
 print(lstw)
 
-for x in df['Rut']:
+for x in df['rut']:
     lst2.append(comRut(x))
 
 n = df.columns[1]                       # Para Rut
