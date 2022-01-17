@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import re
+import sys
 
 class Input:
 
@@ -39,21 +40,11 @@ class Input:
         df2 = pd.DataFrame()
 
         if ddlordml == 'u':
+            In.add_columns()
             for i in range(len(self.lst)):
                 df2[self.lst[i]] = [self.lst[i]+"='"+str(x)+"'," for x in df[self.lst[i]]]  
 
             df2.insert(0, "Texto", sentence)
-            df2[df2.columns[-1]] = df2[df2.columns[-1]].str.replace(r',', '')
-
-            In.add_columns_w()
-            df_W = In.add_where(df)
-            df2 = df2.join(df_W)
-
-        elif ddlordml == 'd':
-            for i in range(len(self.lst)):
-                df2[self.lst[i]] = [self.lst[i]+"='"+str(x)+"'," for x in df[self.lst[i]]]  
-
-#            df2.insert(0, "Texto", sentence)
             df2[df2.columns[-1]] = df2[df2.columns[-1]].str.replace(r',', '')
 
             In.add_columns_w()
@@ -61,12 +52,13 @@ class Input:
             df2 = df2.join(df_W)
 
         else:
+            In.add_columns()
             for i in range(len(self.lst)):
                 df2[self.lst[i]] = ["'"+str(x)+"'," for x in df[self.lst[i]]]
+
             df2.insert(0, "Texto", sentence)
             if self.lst[-1]:
-                df2[self.lst[i]]=["'"+str(x)+"' );" for x in df[self.lst[i]]]
-#            df2[df2.columns[-1]] = df2[df2.columns[-1]].str.replace(r',', '')
+                df2[self.lst[i]]=["'"+str(x)+"');" for x in df[self.lst[i]]]
         return df2
 
     def add_where(self,df):
@@ -82,12 +74,11 @@ class Input:
         sentence = sentence.lower()
         if re.search('^update',sentence):
             return 'u'
-        elif re.search('^delete', sentence):
-            return 'd'
         elif re.search('^insert', sentence):
             return 'i'
         else:
             print('Ingrese sentencia valida!')
+            sys.exit()
     
         
 if __name__ == "__main__":
@@ -96,7 +87,6 @@ if __name__ == "__main__":
     dipluspath = In.path_to_file(di)
     df = pd.read_csv(dipluspath)
     print(df)
-    In.add_columns()
 
     sentence = In.sentence_input()
 
@@ -104,13 +94,8 @@ if __name__ == "__main__":
 
     df_c = In.construye(df,sentence,ddlordml)
 
-    # In.add_columns_w()
-    # df_W = In.add_where(df)
-    
-    # df = df_c.join(df_W)
     print(df_c)
 
 
-# Unir dataframes en funcion
 # Agregar funcion para guardar script sql
 # Agregar funcion para realizar en DB directamente
