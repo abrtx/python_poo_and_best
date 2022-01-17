@@ -96,6 +96,8 @@ if __name__ == "__main__":
 
     print(df_c)
 
+    dipluspath=dipluspath.split(".")
+    file=dipluspath[0]+".sql"
+    np.savetxt(file, df_c, fmt="%s")
 
-# Agregar funcion para guardar script sql
 # Agregar funcion para realizar en DB directamente
